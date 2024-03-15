@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework" "theatre",
+    "drf_spectacular",
+    "rest_framework",
+    "theatre",
     "user",
 ]
 
@@ -142,8 +144,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Cinema API",
-    "DESCRIPTION": "Order tickets for your movie session",
+    "TITLE": "Theatre service API",
+    "DESCRIPTION": "Order tickets for your performance in theatre",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     "SWAGGER_UI_SETTINGS": {
