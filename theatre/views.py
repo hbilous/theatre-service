@@ -11,9 +11,20 @@ from rest_framework.viewsets import GenericViewSet
 
 from theatre.models import Genre, Actor, TheatreHall, Play, Performance, Order
 from theatre.permissions import IsAdminOrIfAuthenticatedReadOnly
-from theatre.serializers import GenreSerializer, ActorSerializer, TheatreHallSerializer, PlaySerializer, \
-    PlayListSerializer, PlayDetailSerializer, PlayImageSerializer, PerformanceSerializer, PerformanceListSerializer, \
-    PerformanceDetailSerializer, OrderSerializer, OrderListSerializer
+from theatre.serializers import (
+    GenreSerializer,
+    ActorSerializer,
+    TheatreHallSerializer,
+    PlaySerializer,
+    PlayListSerializer,
+    PlayDetailSerializer,
+    PlayImageSerializer,
+    PerformanceSerializer,
+    PerformanceListSerializer,
+    PerformanceDetailSerializer,
+    OrderSerializer,
+    OrderListSerializer,
+)
 
 
 class GenreViewSet(
@@ -179,4 +190,3 @@ class OrderViewSet(
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
