@@ -60,28 +60,6 @@ class Play(models.Model):
     def __str__(self):
         return self.title
 
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(
-                "title",
-                type={"type": "str"},
-                description="Filter by play title (ex. ?title=inception)",
-            ),
-            OpenApiParameter(
-                "genres",
-                type={"type": "list", "items": {"type": "number"}},
-                description="Filter by genres ID (ex. ?genres=1,2)",
-            ),
-            OpenApiParameter(
-                "actors",
-                type={"type": "list", "items": {"type": "number"}},
-                description="Filter by actors ID (ex. ?actors=1,2)",
-            ),
-        ]
-    )
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
-
 
 class Performance(models.Model):
     play = models.ForeignKey(Play, on_delete=models.CASCADE)
@@ -93,22 +71,6 @@ class Performance(models.Model):
 
     def __str__(self):
         return f"{self.play.title} {str(self.show_time)}"
-
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(
-                "date", type={"type": "date"},
-                description="Filtering by date"
-            ),
-            OpenApiParameter(
-                "movie", type={"type": "number"},
-                description="Filtering by play id"
-            ),
-        ]
-    )
-    # Only for documentation purposes
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
 
 
 class Order(models.Model):
